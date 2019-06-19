@@ -40,29 +40,66 @@ $(function(){
 	$(".btn-danger").click(function() {
 		var selected1 = document.getElementById("Combattant1").value;
 		var selected2 = document.getElementById("Combattant2").value;
-		console.log(selected1 + " vs "+ selected2);
-
+		var Name1 = document.getElementById("Combattant2").text;
+		var Name2 = document.getElementById("Combattant2").text;
 
 		if(selected1 != null && selected2 != null && selected1 != selected2){
+			$("#combat").append(Name1 +" attaque "+Name2+" !");
 			$("#combat").append(selected1 +" attaque "+selected2+" !");
 
-			switch(selected1){
-				case("chat"):
-				
-					break;
-				case("Choupette"):
-
-					break;
-				case("Scarole"):
-
-					break;
-				case("Rintintin"):
-
-					break;
+			if(selected1 == "chat"){
+				switch(selected2){
+					case("hamster"):
+						$("combat").append(chat.fight(hamster));
+						break;
+					case("tortue"):
+						$("combat").append(chat.fight(tortue));
+						break;
+					case("chien"):
+						$("combat").append(chat.fight(chien));
+						break;
+				}
 			}
 
-			$("combat").append(selected1.fight(selected2));
-
+			else if(selected1 == "hamster"){
+				switch(selected2){
+					case("chat"):
+						$("combat").append(hamster.fight(chat));
+						break;
+					case("tortue"):
+						$("combat").append(hamster.fight(tortue));
+						break;
+					case("chien"):
+						$("combat").append(hamster.fight(chien));
+						break;
+				}
+			}
+			else if(selected1 == "tortue"){
+				switch(selected2){
+					case("hamster"):
+						$("combat").append(tortue.fight(hamster));
+						break;
+					case("chat"):
+						$("combat").append(tortue.fight(chat));
+						break;
+					case("chien"):
+						$("combat").append(tortue.fight(chien));
+						break;
+				}
+			}
+			else if(selected1 == "chien"){
+				switch(selected2){
+					case("hamster"):
+						$("combat").append(chien.fight(hamster));
+						break;
+					case("tortue"):
+						$("combat").append(chien.fight(tortue));
+						break;
+					case("chat"):
+						$("combat").append(chien.fight(chat));
+						break;
+				}
+			}
 
 		} else { alert("Veuillez sélectionner 2 combattants.");}	
 	});
