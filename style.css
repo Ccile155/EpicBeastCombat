@@ -4,13 +4,44 @@
     font-style: normal;
     src: url('../Font/web fonts/molot_regular_macroman/Molot-webfont.eot');
     src: url('../Font/web fonts/molot_regular_macroman/Molot-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../Font/web fonts/molot_regular_macroman/Molot-webfont.woff2') format('woff2'),
          url('../Font/web fonts/molot_regular_macroman/Molot-webfont.woff') format('woff'),
          url('../Font/web fonts/molot_regular_macroman/Molot-webfont.ttf') format('truetype'),
          url('../Font/web fonts/molot_regular_macroman/Molot-webfont.svg#molotregular') format('svg');
 }
 
-h1{font-family: "molotregular", zillaslab;}
-
 .spacer{margin-top:20px;}
+
+header{
+	background-color: black;
+	color: white;
+	width: 100%;
+	font-family: "molotregular", zillaslab;
+	vertical-align: middle;
+	text-align: center;
+}
+
+h1{	margin-bottom: 0px !important;}
+
+
+/*.zoom {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.zoom:hover image {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}*/
+
+footer{
+	justify-content: center;
+	background-color: black;
+	color: white;
+}
+
+.annonce{
+	font-family: "molotregular", zillaslab;}
+
+
 

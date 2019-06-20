@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<meta http-equiv="X-UA-Compatible content=3IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<title>Animal</title>
 
 </head>
@@ -23,30 +23,36 @@
 		</div>
 <!--__________________PAGE CONTENT____________________-->
 		<div class="spacer row-fluid">
-			<h2>Classement en force</h2>
+			<h2>Les beasts</h2>
 				<div class="spacer row" id="presa">
 					<div class="col">
-						<image src="../Images/chat.png" alt="chat"/>
+						<image src="../Images/chat.png" alt="chat" style="width: 250px; padding-top: 15px;"/>
 					</div>
 					<div class="col">
-						<image src = "../Images/hamster.png" alt="hamster"/>
+						<image src = "../Images/hamster.png" alt="hamster" style="width: 250px; padding-top: 15px;"/>
 					</div>
 					<div class="col">
-						<image src = "../Images/Tortue.png" alt="tortue"/>
+						<image src = "../Images/Tortue.png" alt="tortue" style="width: 250px; padding-top: 15px;"/>
 					</div>
 					<div class="col">
-						<image src = "../Images/pitbull-perdu.png" alt="chien"/>
+						<image src = "../Images/pitbull-perdu.png" alt="chien" style="width: 250px; padding-top: 35px;"/>
 					</div>
 
-				<a href="file:///C:/Users/Administrateur/Documents/Javascript/Objet/objet.html"><button type="button" class="btn btn-primary" >Réattribuer les stats</button></a>
+					<p><a href="file:///C:/Users/Administrateur/Documents/Javascript/Objet/objet.html"><button type="button" class="spacer btn btn-primary" >Réattribuer les stats</button></a></p>
 
 				</div>
 		</div>
 
-		<div class="row-fluid spacer" id="combat">
-			<h2>Combats</h2>
+		<div class="row-fluid spacer">
+			<h2>Arène</h2>
 
-				<form class="spacer">
+				<div class="spacer row" id="combat">
+					<p>Pour le prochain combat, vous avez sélectionné:</p>
+
+					<div id="display"></div>
+				</div>
+
+<!-- 				<form class="spacer">
 					<select class="form-control float-left " id="Combattant1" style="width: 250px;">
 						<option value="" selected="selected">Combattant 1</option>
 						<option value="chat">Minou le chat</option>
@@ -62,16 +68,18 @@
 						<option value="tortue">Scarole la tortue</option>
 						<option value="chien">Rintintin le chien</option>
 					</select>
+				</form> -->
+			<div class="row">
+				<button type="button" class="btn btn-danger" style="margin-left: 15px;">Lancer le combat</button>
+			</div>
 
-						<button type="button" class="btn btn-danger" style="margin-left: 15px">Fight !</button>
-
-				</form>
+			<div class="row spacer" id="historique"></div>
 
 		</div>
 
 <!--__________________BOTTOM____________________-->
 
-		<footer class="spacer row-fluid">
+		<footer class="spacer row">
 			<p>A bientôt chez les Animaux</p>
 		</footer>
 

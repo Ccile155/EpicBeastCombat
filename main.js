@@ -19,6 +19,7 @@ const hamster = new Animal("hamster", "Choupette", "marron", getRandomInt(100), 
 // var selected1JQ = $(selected1);
 // var selected2JQ = $(selected2);
 
+
 $(function(){
 //######################## PRESENTATION COMBATTANTS ########################
  $(".btn-primary").on('click',function() {
@@ -27,93 +28,132 @@ $(function(){
      event.preventDefault();
  });
 
-	$("#presa p").css("text-align", "center").css("font-style", "italic").css("align-content", "center");
-		$("[alt]").css("width", "250px");
-		$("[alt='chat']").after("<p>"+chat.getDescription()+"</p>");
-		$("[alt='hamster']").after("<p>"+hamster.getDescription()+"</p>");
-		$("[alt='tortue']").after("<p>"+tortue.getDescription()+"</p>");
-		$("[alt='chien']").after("<p>"+chien.getDescription()+"</p>");
+	$("[alt='chat']").after("<p class='capt'>"+chat.getDescription()+"</p>");
+	$("[alt='hamster']").after("<p class='capt'>"+hamster.getDescription()+"</p>");
+	$("[alt='tortue']").after("<p class='capt'>"+tortue.getDescription()+"</p>");
+	$("[alt='chien']").after("<p class='capt'>"+chien.getDescription()+"</p>");
+	$(".capt").css("text-align", "center").css("font-style", "italic").css("align-content", "center");
 
-		 $("[alt]").on('mouseover',function() {
-		 	$("[alt]").css("width", "500px");
-		 });
+//Sélection des images
+	$("[alt]").each(function(i, el){
+        $(this).addClass('img' + i); // identify imgs by index (class="imgN")
+        $(this).css("margin-righ","10px");
+ 	});
+
+ 	$("[alt]").click(function(){
+        var $img = $(this).toggleClass('clicked');
+        $("div:has(> .clicked)").css("border-radius","15px").css("box-shadow","0px 0px 4px black");
+ 
+        var count = document.getElementsByClassName('clicked').length; //récupère le nbr de sélectionnés
+
+        if(count < 3){         //pour que seuls 2 combattants soient sélectionnés
+	        if($img.hasClass('clicked')){
+	            $("#display").append($img.clone().removeClass('clicked').css("zoom","0.5"));
+	        }
+	        else{
+	            $("#display").find('.' + $img[0].className).remove();
+	            $(this).toggleClass('unclicked');
+	            $("div:has(> .unclicked)").css("box-shadow","none");
+	        }
+    	} else {alert("Seuls les duels sont vraiment épiques !");
+    	        $(this).toggleClass('unclicked');
+	            $("div:has(> .unclicked)").css("box-shadow","none");
+	            count-= 1;
+	    }
+    });
+
+
 
 //######################## COMBATS ########################
-	// $("#combat").css("align-content", "center");
-
 	$(".btn-danger").click(function() {
-		var selected1 = document.getElementById("Combattant1").value;
-		var selected2 = document.getElementById("Combattant2").value;
-		var Name1 = document.getElementById("Combattant2").text;
-		var Name2 = document.getElementById("Combattant2").text;
+
+//_____il faut vider le texte du combat précédent_____________
 
 
-		if(selected1 != null && selected2 != null && selected1 != selected2){
+		// var selected1 = document.getElementById("Combattant1").value;
+		// var selected2 = document.getElementById("Combattant2").value;
+		// var Name1 = document.getElementById("Combattant2").text;
+		// var Name2 = document.getElementById("Combattant2").text;
+		var click1 = document.getElementsByClassName("clicked").item(0);
+		var click2 = document.getElementsByClassName("clicked").item(1);
+
+		if(click1 != null && click2 != null && click1 != click2){
 			// console.log(Name1 +" attaque "+Name2+" !");
 			// $("#combat").append(selected1 +" attaque "+selected2+" !");
+		var selected1 = click1.getAttribute("alt");
+		var selected2 = click2.getAttribute("alt");
+
+
+//créer 2 divs cote à cote pour chaque combattant , load les stats dont la jauge de vie
+//ajouter une animation quand l'un attaque l'autre
 
 			if(selected1 == "chat"){
 				switch(selected2){
 					case("hamster"):
-						$("#combat").append("<p/>Ca va faire mal !</p>")
-						$("#combat").append("<p/>"+chat.fight(hamster)+"<p>");
+						$("#historique").prepend("<p class='annonce'>Ca va faire mal !</p>")
+						$(".annonce").after("<p>"+chat.fight(hamster)+"<p>");
 						break;
 					case("tortue"):
-						$("#combat").append("<p/>On peut s'attendre au pire...</p>")
-						$("#combat").append(chat.fight(tortue));
+						$("#historique").prepend("<p class='annonce'>On peut s'attendre au pire...</p>")
+						$(".annonce").after("<p>"+chat.fight(tortue)+"<p>");
 						break;
 					case("chien"):
-						$("#combat").append("<p/>Les pires ennemis en face à face !</p>")
-						$("#combat").append(chat.fight(chien));
+						$("#historique").prepend("<p class='annonce'>Les pires ennemis en face à face !</p>")
+						$(".annonce").after("<p>"+chat.fight(chien)+"<p>");
 						break;
 				}
 			}
 			else if(selected1 == "hamster"){
 				switch(selected2){
 					case("chat"):
-						$("#combat").append("<p/>Ouille !</p>")
-						$("#combat").append(hamster.fight(chat));
+						$("#historique").prepend("<p class='annonce'>Ouille !</p>")
+						$(".annonce").after(hamster.fight(chat));
 						break;
 					case("tortue"):
-						$("#combat").append(hamster.fight(tortue));
+						$("#historique").prepend(hamster.fight(tortue));
 						break;
 					case("chien"):
-						$("#combat").append(hamster.fight(chien));
+						$("#historique").prepend(hamster.fight(chien));
 						break;
 				}
 			}
 			else if(selected1 == "tortue"){
 				switch(selected2){
 					case("hamster"):
-						$("#combat").append(tortue.fight(hamster));
+						$("#historique").prepend(tortue.fight(hamster));
 						break;
 					case("chat"):
-						$("#combat").append(tortue.fight(chat));
+						$("#historique").prepend(tortue.fight(chat));
 						break;
 					case("chien"):
-						$("#combat").append(tortue.fight(chien));
+						$("#historique").prepend(tortue.fight(chien));
 						break;
 				}
 			}
 			else if(selected1 == "chien"){
 				switch(selected2){
 					case("hamster"):
-						$("#combat").append(chien.fight(hamster));
+						$("#historique").prepend(chien.fight(hamster));
 						break;
 					case("tortue"):
-						$("#combat").append(chien.fight(tortue));
+						$("#historique").prepend(chien.fight(tortue));
 						break;
 					case("chat"):
-						$("#combat").append("<p/>Les pires ennemis en face à face !</p>")
-						$("#combat").append(chien.fight(chat));
+						$("#historique").prepend("<p class='annonce'>Les pires ennemis en face à face !</p>")
+						$(".annonce").after(chien.fight(chat));
 						break;
 				}
 			}
 
+//_______________L'icone du winner sautille_________________
+
 		} else { alert("Veuillez sélectionner 2 combattants différents.");}	
 	});
 
+	// $("#historique p").css("font-family", "initial");
+
 //######################## FOOTER ########################
-	$("footer").css("text-align", "center");
+	$("footer").css("height","10%");
+	$("footer:first").css("align-content", "center");
 
 });
