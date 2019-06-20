@@ -14,38 +14,45 @@ class Animal{
 
 	fight(cible){
 		//boucle à revoir !
-			var looser;
 			var winner;
 			var malus;
-
-		do{
+			var resultat;
+			var statement1 ="";
+			var statement2 ="";
+			var statement3 ="";
 			var dead = false;
-
+		do{
 			if (this.sante <= 0){
-				looser = this.nom;
 				winner = cible.nom;
+				resultat = (this.nom + " a lamentablement perdu...<br/>");
 				dead = true;
-			}
-			else if (cible.sante <= 0){
-				looser = cible.nom;
+			} else if (cible.sante <= 0){
 				winner = this.nom;
+				resultat = (cible.nom + " a lamentablement perdu...<br/>");
 				dead = true;
 			} else {
-					if(this.force > cible.force){
-						malus = getRandomInt(1)*(this.force - cible.force +1);
-						cible.sante -= malus;
-						return `${this.nom} inflige une terrible morsure à ${cible.nom}, qui perd ${malus} PV.<br/>
-								Il ne reste plus que ${cible.sante} PV au pauvre ${cible.espece}.<br/><br/>`;
+					let random = getRandomInt(10);
+					if(random >= 5){
+					malus = getRandomInt(10)*(this.force - cible.force);
+					cible.sante -= malus;
+						if (cible.sante >0){
+							statement2 += (this.nom +" inflige une terrible morsure à "+cible.nom+", qui perd "+malus+" PV.<br/> Il ne reste plus que "+cible.sante+" PV au pauvre "+cible.espece+".<br/><br/>");
+						} else {statement2 += (this.nom +" inflige une terrible morsure à "+cible.nom+", qui perd "+malus+" PV.<br/>");
 					}
-					else {
-						malus = getRandomInt(1)*(cible.force - this.force +1);
-						return `${this.nom} ne parvient pas à toucher ${cible.nom} qui contre-attaque!<br/>
-								${this.nom} perd ${malus} PV.<br/><br/>`;
+										
+					} else {
+						malus = getRandomInt(10)*(cible.force - this.force);
+						this.sante -= malus;
+						statement3 += (this.nom +" ne parvient pas à toucher "+cible.nom+" qui contre-attaque!<br/> "+this.nom+" perd "+malus+ "PV.<br/><br/>");
 					}
-				}
-		}while (dead == false);
+			statement1 += (statement2 + statement3);
+			}
+		} while (dead == false);
 
-	document.write(looser + " a lamentablement perdu...<br/>");
+		if(!statement1){
+			return (resultat);	
+		} else {return (statement1 + resultat);}
+
 	}
 }
 

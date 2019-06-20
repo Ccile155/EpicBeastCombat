@@ -1,1 +1,16 @@
+@font-face {
+    font-family: 'molotregular';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../Font/web fonts/molot_regular_macroman/Molot-webfont.eot');
+    src: url('../Font/web fonts/molot_regular_macroman/Molot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../Font/web fonts/molot_regular_macroman/Molot-webfont.woff2') format('woff2'),
+         url('../Font/web fonts/molot_regular_macroman/Molot-webfont.woff') format('woff'),
+         url('../Font/web fonts/molot_regular_macroman/Molot-webfont.ttf') format('truetype'),
+         url('../Font/web fonts/molot_regular_macroman/Molot-webfont.svg#molotregular') format('svg');
+}
+
+h1{font-family: "molotregular", zillaslab;}
+
 .spacer{margin-top:20px;}
+
