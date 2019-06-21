@@ -11,6 +11,7 @@
 
 .spacer{margin-top:20px;}
 
+
 header{
 	background-color: black;
 	color: white;
@@ -23,16 +24,24 @@ header{
 h1{	margin-bottom: 0px !important;}
 
 
-/*.zoom {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+#combat{
+
 }
-.zoom:hover image {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
-}*/
+
+#display{
+	background-image:url("../Images/flammes2.jpg");
+	background-repeat: no-repeat;
+	background-position:center top;
+	align-content: center;
+}
+
+#historique{
+	text-align: center;
+
+}
+
+.annonce{
+	font-family: "molotregular", zillaslab;}
 
 footer{
 	justify-content: center;
@@ -40,8 +49,7 @@ footer{
 	color: white;
 }
 
-.annonce{
-	font-family: "molotregular", zillaslab;}
+
 
 
 
