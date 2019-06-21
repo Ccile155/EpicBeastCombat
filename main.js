@@ -2,41 +2,6 @@ function getRandomInt(max) {
   	return Math.floor(Math.random() * Math.floor(max));
 	}
 
-function annonceDebile(a){
-	switch (a) {
-		case 1:
-			return "<p class='annonce'>Ca va faire mal !</p>";
-			break;
-		case 2:
-			return "<p class='annonce'>On peut s'attendre au pire...</p>";
-			break;
-		case 3:
-			return "<p class='annonce'>Ouille !</p>";
-			break;
-		case 4:
-			return "<p class='annonce'>Il va y avoir du sport !</p>";
-			break;
-		case 5:
-			return "<p class='annonce'>T'es pas un peu cruel des fois ?</p>";
-			break;
-		case 6:
-			return "<p class='annonce'>Suspens...</p>";
-			break;
-		case 7:
-			return "<p class='annonce'>Ca va faire mal !</p>";
-			break;
-		case 8:
-			return "<p class='annonce'>Que le combat commence !</p>";
-			break;
-		case 9:
-			return "<p class='annonce'>Il va y avoir du sport !</p>";
-			break;
-		case 10:
-			return "<p class='annonce'>Que le combat commence !</p>";
-			break;
-	}
-}
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 const chien = new Animal("chien", "Rintintin", "noir", getRandomInt(99)+1, getRandomInt(100));
 
@@ -47,14 +12,10 @@ const tortue = new Animal("tortue", "Scarole", "verte", getRandomInt(99)+1, getR
 const hamster = new Animal("hamster", "Choupette", "marron", getRandomInt(99)+1, getRandomInt(100));
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-// let winnerJQ = $(winner);
-// let looserJQ = $(looser);
-
 // var selected1 = document.getElementById("Combattant1").value;
 // var selected2 = document.getElementById("Combattant2").value;
 // var selected1JQ = $(selected1);
 // var selected2JQ = $(selected2);
-
 
 $(function(){
 //######################## PRESENTATION COMBATTANTS ########################
@@ -100,10 +61,8 @@ $(function(){
 
 //######################## COMBATS ########################
 	$(".btn-danger").click(function() {
-
-//_____il faut vider le texte du combat précédent_____________
-
-
+		
+		$("#historique").empty(); //vidange de la div
 		// var selected1 = document.getElementById("Combattant1").value;
 		// var selected2 = document.getElementById("Combattant2").value;
 		// var Name1 = document.getElementById("Combattant2").text;
@@ -117,10 +76,8 @@ $(function(){
 		var selected1 = click1.getAttribute("alt");
 		var selected2 = click2.getAttribute("alt");
 
-
 //créer 2 divs cote à cote pour chaque combattant , load les stats dont la jauge de vie
 //ajouter une animation quand l'un attaque l'autre
-
 
 			if(selected1 == "chat"){
 				switch(selected2){
@@ -186,13 +143,44 @@ $(function(){
 						break;
 				}
 			}
-
 //_______________L'icone du winner sautille_________________
-
 		} else { alert("Veuillez sélectionner 2 combattants différents.");}	
 	});
 
-	// $("#historique p").css("font-family", "initial");
+function annonceDebile(a){
+	switch (a) {
+		case 1:
+			return "<p class='annonce'>Ca va faire mal !</p>";
+			break;
+		case 2:
+			return "<p class='annonce'>On peut s'attendre au pire...</p>";
+			break;
+		case 3:
+			return "<p class='annonce'>Ouille !</p>";
+			break;
+		case 4:
+			return "<p class='annonce'>Il va y avoir du sport !</p>";
+			break;
+		case 5:
+			return "<p class='annonce'>T'es pas un peu cruel des fois ?</p>";
+			break;
+		case 6:
+			return "<p class='annonce'>Suspens...</p>";
+			break;
+		case 7:
+			return "<p class='annonce'>Ca va faire mal !</p>";
+			break;
+		case 8:
+			return "<p class='annonce'>Que le combat commence !</p>";
+			break;
+		case 9:
+			return "<p class='annonce'>Il va y avoir du sport !</p>";
+			break;
+		case 10:
+			return "<p class='annonce'>Que le combat commence !</p>";
+			break;
+	}
+}
 
 //######################## FOOTER ########################
 	$("footer").css("height","10%");

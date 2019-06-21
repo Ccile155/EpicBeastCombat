@@ -11,21 +11,18 @@
 
 .spacer{margin-top:20px;}
 
-
 header{
 	background-color: black;
 	color: white;
 	width: 100%;
-	font-family: "molotregular", zillaslab;
+	font-family: "molotregular", impact;
 	vertical-align: middle;
 	text-align: center;
 }
 
 h1{	margin-bottom: 0px !important;}
 
-
 #combat{
-
 }
 
 #display{
@@ -37,11 +34,10 @@ h1{	margin-bottom: 0px !important;}
 
 #historique{
 	text-align: center;
-
 }
 
 .annonce{
-	font-family: "molotregular", zillaslab;}
+	font-family: "molotregular", impact;}
 
 footer{
 	justify-content: center;
